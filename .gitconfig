@@ -1,0 +1,11 @@
+[color]
+	ui = true
+[user]
+	name = Bili Xu
+	email = xubili93@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+        st = status
+        up = pull --rebase --autostash
