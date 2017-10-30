@@ -29,6 +29,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'neomake/neomake'
 Plugin 'wincent/terminus'
+Plugin 'junegunn/goyo.vim'
 
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
@@ -129,6 +130,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title
 set visualbell
 set noerrorbells
+set guifont=Knack\ Nerd\ Font:h12
 set guioptions-=r
 set guioptions-=L
 
