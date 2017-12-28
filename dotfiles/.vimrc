@@ -15,6 +15,7 @@ Bundle "tomtom/tlib_vim"
 
 " --- Making Vim look good ---
 Plugin 'flazz/vim-colorschemes'
+Plugin 'mhartington/oceanic-next'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -29,7 +30,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'neomake/neomake'
 Plugin 'wincent/terminus'
-Plugin 'junegunn/goyo.vim'
 
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
@@ -93,16 +93,16 @@ filetype plugin indent on    " required
 "
 "
 
-syntax enable
-" Solarized light during the day, solarized dark during the night
-let hour = strftime("%H")
-if 6 <= hour && hour < 19
-  set background=light
-else
-  set background=dark
+" Theme
+
+if (has("termguicolors"))
+ set termguicolors
 endif
 
-colorscheme solarized
+syntax enable
+colorscheme OceanicNext
+set background=dark
+
 
 set nowrap
 set backspace=indent,eol,start
@@ -130,7 +130,6 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title
 set visualbell
 set noerrorbells
-set guifont=Knack\ Nerd\ Font:h12
 set guioptions-=r
 set guioptions-=L
 
@@ -150,6 +149,10 @@ autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
+" --- ack options
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " --- ctrlp options
 let g:ctrlp_map = '<c-p>'
@@ -205,19 +208,19 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 " --- airline options
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme='oceanicnext'
 set laststatus=2
 set noshowmode
 
 " --- mappings
+
+" Pretty format JSON
 nmap <F2> :%! python -m json.tool<CR>
 
+" Strip trailing whitespaces
+nmap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " --- Python
-let g:neomake_python_pylint = {
-    \ 'args': [],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_python_enabled_makers = ['pylint']
 let python_highlight_all = 1
 let g:ultisnips_python_style = 'google'
 

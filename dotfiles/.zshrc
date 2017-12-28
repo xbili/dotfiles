@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/home/xbili/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -98,7 +98,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/.pyenv/bin:$PATH"
+# PYENV
+export PATH="/home/xbili/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -108,3 +109,7 @@ alias android-studio='/usr/local/android-studio/bin/studio.sh'
 # Xilinx
 # source /opt/Xilinx/SDK/2017.3/settings64.sh
 export CROSS_COMPILE=arm-linux-gnueabihf-
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
