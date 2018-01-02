@@ -64,6 +64,7 @@ Plugin 'ryanoasis/vim-devicons'
 " --- Python
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
+Plugin 'davidhalter/jedi-vim'
 
 " --- Scala
 Plugin 'derekwyatt/vim-scala'
