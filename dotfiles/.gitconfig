@@ -1,11 +1,15 @@
 [color]
-	ui = true
+    ui = true
+    branch = auto
+    diff = auto
+    status = auto
+    showbranch = auto
 [user]
-	name = Bili Xu
-	email = xubili93@gmail.com
+    name = Bili Xu
+    email = xubili93@gmail.com
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-        st = status
-        up = pull --rebase --autostash
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    up = pull --rebase --autostash
