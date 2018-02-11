@@ -51,12 +51,9 @@ Plugin 'rschmukler/pangloss-vim-indent'
 Plugin 'benjie/neomake-local-eslint.vim'
 
 " --- JSX for React
+Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'jparise/vim-graphql'
 Plugin 'epilande/vim-react-snippets'
-
-" --- Swift
-Plugin 'toyamarinyon/vim-swift'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -66,15 +63,8 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
 Plugin 'davidhalter/jedi-vim'
 
-" --- Scala
-Plugin 'derekwyatt/vim-scala'
-
-" --- Rust
-Plugin 'rust-lang/rust.vim'
-
-" --- Rails
-Plugin 'tpope/vim-rails'
-
+" --- Verilog
+Plugin 'nachumk/systemverilog.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -231,6 +221,9 @@ let g:ultisnips_python_style = 'google'
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:xml_syntax_folding = 0
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 let g:used_javascript_libs = 'react,underscore'
 let g:flow#enable = 1
 
