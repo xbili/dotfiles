@@ -30,6 +30,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'neomake/neomake'
 Plugin 'wincent/terminus'
+Plugin 'Valloric/YouCompleteMe'
 
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
@@ -49,6 +50,9 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'flowtype/vim-flow'
 Plugin 'rschmukler/pangloss-vim-indent'
 Plugin 'benjie/neomake-local-eslint.vim'
+
+" --- TypeScript
+Plugin 'leafgarland/typescript-vim.git'
 
 " --- JSX for React
 Plugin 'pangloss/vim-javascript'
@@ -222,5 +226,13 @@ let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 let g:used_javascript_libs = 'react,underscore'
 let g:flow#enable = 1
+
+" --- TypeScript
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 autocmd! BufWritePost * Neomake
