@@ -109,3 +109,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # Android Studio
 alias android-studio='/usr/local/android-studio/bin/studio.sh'
+
+if [ -d "/opt/Xilinx/Vivado/2017.4" ]; then
+    source /opt/Xilinx/Vivado/2017.4/settings64.sh
+fi
