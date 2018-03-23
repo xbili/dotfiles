@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/oceanic-next-shell/oceanic-next.dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -85,8 +85,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 
 alias g='git'
 alias gst='git status'
@@ -109,7 +109,3 @@ eval "$(pyenv virtualenv-init -)"
 
 # Android Studio
 alias android-studio='/usr/local/android-studio/bin/studio.sh'
-
-# Xilinx
-# source /opt/Xilinx/SDK/2017.3/settings64.sh
-export CROSS_COMPILE=arm-linux-gnueabihf-

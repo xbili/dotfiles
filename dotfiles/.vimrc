@@ -14,7 +14,7 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 
 " --- Making Vim look good ---
-Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'mhartington/oceanic-next'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -62,9 +62,10 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'tweekmonster/django-plus.vim'
 
 " --- Verilog
-Plugin 'nachumk/systemverilog.vim'
+Plugin 'vhda/verilog_systemverilog.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -86,16 +87,9 @@ filetype plugin indent on    " required
 
 " Theme
 
-if (has("termguicolors"))
- set termguicolors
-endif
-
 syntax on
-let g:oceanic_next_terminal_bold=1
-let g:oceanic_next_terminal_italic=1
-colorscheme OceanicNext
 set background=dark
-
+colorscheme solarized
 
 set nowrap
 set backspace=indent,eol,start
@@ -135,6 +129,7 @@ let g:delimitMate_expand_cr=1
 
 " --- tabs for different code
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
@@ -214,6 +209,7 @@ nmap <F2> :%! python -m json.tool<CR>
 nmap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " --- Python
+let g:neomake_python_enabled_makers = ['pylint']
 let python_highlight_all = 1
 let g:ultisnips_python_style = 'google'
 
