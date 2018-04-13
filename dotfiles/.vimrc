@@ -28,9 +28,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'neomake/neomake'
 Plugin 'wincent/terminus'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'w0rp/ale'
 
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
@@ -49,10 +48,6 @@ Plugin 'othree/es.next.syntax.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'flowtype/vim-flow'
 Plugin 'rschmukler/pangloss-vim-indent'
-Plugin 'benjie/neomake-local-eslint.vim'
-
-" --- TypeScript
-Plugin 'leafgarland/typescript-vim.git'
 
 " --- JSX for React
 Plugin 'pangloss/vim-javascript'
@@ -71,6 +66,8 @@ Plugin 'tweekmonster/django-plus.vim'
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
 
+" --- Zen Writing
+Plugin 'junegunn/goyo.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -213,13 +210,13 @@ nmap <F2> :%! python -m json.tool<CR>
 nmap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " --- Python
-let g:neomake_python_enabled_makers = ['pylint']
 let python_highlight_all = 1
 let g:ultisnips_python_style = 'google'
 
+" Use yapf to format our Python code
+autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
+
 " --- Javascript
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_javascript_enabled_makers = ['eslint']
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:xml_syntax_folding = 0
 let g:javascript_plugin_jsdoc = 1
@@ -227,12 +224,8 @@ let g:javascript_plugin_flow = 1
 let g:used_javascript_libs = 'react,underscore'
 let g:flow#enable = 1
 
-" --- TypeScript
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-
-autocmd! BufWritePost * Neomake
+" --- Ultisnips
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
