@@ -7,6 +7,12 @@ for FILE in `ls -A ./dotfiles/`; do
     if [ -e "$HOME/$FILE" ]
     then
         echo "$HOME/$FILE already exists, renaming it to $FILE.bak"
+
+        if [ -e "$HOME/$FILE.bak" ]
+        then
+            rm "$HOME/$FILE.bak"
+        fi
+
         mv "$HOME/$FILE" "$HOME/$FILE.bak"
     fi
 
