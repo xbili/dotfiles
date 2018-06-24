@@ -161,14 +161,16 @@ let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = 'w'
 
 " --- jistr/vim-nerdtree-tabs ----
+"
 " Open/close NERDTree Tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 0
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['node_modules', '\.pyc$', '.DS_Store', '\.class$', '__pycache__']
 
-" NERDTress File highlighting
+" NERDTree File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
@@ -194,30 +196,15 @@ call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', 'NONE')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', 'NONE')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', 'NONE')
 
+" --- PLUGIN SETTINGS
 
 " --- Devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
-" --- airline options
+" --- Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext'
 set laststatus=2
 set noshowmode
-
-" --- mappings
-
-" Pretty format JSON
-nmap <F2> :%! python -m json.tool<CR>
-
-" Strip trailing whitespaces
-nmap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
-" --- Python
-let python_highlight_all = 1
-let g:ultisnips_python_style = 'google'
-
-" Use yapf to format our Python code
-autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
 
 " --- Javascript
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
@@ -232,7 +219,25 @@ let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+let g:ultisnips_python_style = 'google'
+
+" --- Ale
+let g:ale_sign_column_always = 1
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+let g:ale_python_pylint_change_directory = 0
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
+
+" --- MAPPINGS
+
+" Pretty format JSON
+nmap <F2> :%! python -m json.tool<CR>
+
+" Strip trailing whitespaces
+nmap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " --- Slimux configurations
 nmap <F4> :SlimuxREPLSendLine<CR>
 xmap <F4> :SlimuxREPLSendSelection<CR>
+nmap <F6> :SlimuxREPLSendBuffer<CR>
