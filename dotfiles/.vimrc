@@ -48,6 +48,7 @@ Plugin 'othree/es.next.syntax.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'flowtype/vim-flow'
 Plugin 'rschmukler/pangloss-vim-indent'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " --- JSX for React
 Plugin 'pangloss/vim-javascript'
@@ -61,7 +62,6 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'tweekmonster/django-plus.vim'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'

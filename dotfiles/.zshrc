@@ -55,7 +55,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python pyenv history history-substring-search zsh-syntax-highlighting)
+plugins=(git history history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,3 +113,5 @@ alias android-studio='/usr/local/android-studio/bin/studio.sh'
 if [ -d "/opt/Xilinx/Vivado/2017.4" ]; then
     source /opt/Xilinx/Vivado/2017.4/settings64.sh
 fi
+
+export HOMEBREW_GITHUB_API_TOKEN=b9831462aac08a584ce14516d2a9aa9c82c59475
