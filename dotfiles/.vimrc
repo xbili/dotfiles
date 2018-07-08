@@ -214,6 +214,9 @@ let g:javascript_plugin_flow = 1
 let g:used_javascript_libs = 'react,underscore'
 let g:flow#enable = 1
 
+" --- Python
+let python_highlight_all = 1
+
 " --- Ultisnips
 let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
