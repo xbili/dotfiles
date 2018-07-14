@@ -35,6 +35,14 @@ Plugin 'w0rp/ale'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+Plugin 'zchee/deoplete-jedi'
 
 " --- Frontend
 Plugin 'ap/vim-css-color'
@@ -61,7 +69,6 @@ Plugin 'ryanoasis/vim-devicons'
 " --- Python
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
-Plugin 'davidhalter/jedi-vim'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
@@ -231,6 +238,9 @@ let g:ale_python_pylint_change_directory = 0
 let g:ale_linters = {
 \   'python': ['pylint'],
 \}
+
+" --- Deoplate
+let g:deoplete#enable_at_startup = 1
 
 " --- MAPPINGS
 
