@@ -53,6 +53,7 @@ Plugin 'ryanoasis/vim-devicons'
 " --- Python
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
+Plugin 'jmcomets/vim-pony'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
