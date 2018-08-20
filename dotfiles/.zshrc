@@ -1,3 +1,9 @@
+# Make sure PATH is empty before starting
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -100,6 +106,28 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# For nvm usage in directories with .nvmrc
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # PYENV
@@ -114,4 +142,5 @@ if [ -d "/opt/Xilinx/Vivado/2017.4" ]; then
     source /opt/Xilinx/Vivado/2017.4/settings64.sh
 fi
 
-export HOMEBREW_GITHUB_API_TOKEN=b9831462aac08a584ce14516d2a9aa9c82c59475
+LDFLAGS="-L/usr/local/opt/openssl/lib"
+CPPFLAGS="-I/usr/local/opt/openssl/include"

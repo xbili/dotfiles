@@ -3,7 +3,7 @@ set encoding=utf8
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -35,14 +35,7 @@ Plugin 'w0rp/ale'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
-endif
-Plugin 'zchee/deoplete-jedi'
+Plugin 'Valloric/YouCompleteMe'
 
 " --- Frontend
 Plugin 'ap/vim-css-color'
@@ -50,18 +43,8 @@ Plugin 'mattn/emmet-vim'
 Bundle 'nikvdp/ejs-syntax'
 
 " --- JavaScript
-Plugin 'digitaltoad/vim-pug'
-Plugin 'othree/yajs.vim'
-Plugin 'othree/es.next.syntax.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'flowtype/vim-flow'
-Plugin 'rschmukler/pangloss-vim-indent'
-Plugin 'mustache/vim-mustache-handlebars'
-
-" --- JSX for React
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'epilande/vim-react-snippets'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -144,6 +127,7 @@ autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript.jsx setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
@@ -213,14 +197,6 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 set noshowmode
 
-" --- Javascript
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:xml_syntax_folding = 0
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
-let g:used_javascript_libs = 'react,underscore'
-let g:flow#enable = 1
-
 " --- Python
 let python_highlight_all = 1
 
@@ -239,8 +215,8 @@ let g:ale_linters = {
 \   'python': ['pylint'],
 \}
 
-" --- Deoplate
-let g:deoplete#enable_at_startup = 1
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " --- MAPPINGS
 
@@ -254,3 +230,13 @@ nmap <F3> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nmap <F4> :SlimuxREPLSendLine<CR>
 xmap <F4> :SlimuxREPLSendSelection<CR>
 nmap <F6> :SlimuxREPLSendBuffer<CR>
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
