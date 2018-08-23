@@ -45,6 +45,7 @@ Bundle 'nikvdp/ejs-syntax'
 " --- JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'flowtype/vim-flow'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -128,6 +129,7 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript.jsx setlocal ts=2 sw=2 expandtab
+autocmd Filetype json setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
@@ -213,10 +215,14 @@ let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_python_pylint_change_directory = 0
 let g:ale_linters = {
 \   'python': ['pylint'],
+\   'javascript': ['flow']
 \}
 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" --- JavaScript
+let g:javascript_plugin_flow = 1
 
 " --- MAPPINGS
 

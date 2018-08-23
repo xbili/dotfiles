@@ -144,3 +144,13 @@ fi
 
 LDFLAGS="-L/usr/local/opt/openssl/lib"
 CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+# GCC and G++ setup (instead of using Mac OSX's clang)
+alias gcc='gcc-8'
+alias cc='gcc-8'
+alias g++='g++-8'
+alias c++='c++-8'
+export CC=/usr/local/bin/gcc-8
+export CXX=/usr/local/bin/g++-8
+export CPP=/usr/local/bin/cpp-8
+export LD=/usr/local/bin/gcc-8
