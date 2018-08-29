@@ -30,12 +30,12 @@ Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
 Plugin 'w0rp/ale'
+Plugin 'ervandew/supertab'
 
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Valloric/YouCompleteMe'
 
 " --- Frontend
 Plugin 'ap/vim-css-color'
@@ -54,6 +54,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
 Plugin 'jmcomets/vim-pony'
+Plugin 'lambdalisue/vim-pyenv'
+Plugin 'python-mode/python-mode'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
@@ -219,9 +221,6 @@ let g:ale_linters = {
 \   'javascript': ['flow']
 \}
 
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " --- JavaScript
 let g:javascript_plugin_flow = 1
 
@@ -238,12 +237,5 @@ nmap <F4> :SlimuxREPLSendLine<CR>
 xmap <F4> :SlimuxREPLSendSelection<CR>
 nmap <F6> :SlimuxREPLSendBuffer<CR>
 
-"python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" --- python-mode configurations
+let g:pymode_breakpoint_bind = '<leader>b'
