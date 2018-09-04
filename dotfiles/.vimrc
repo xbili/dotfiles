@@ -136,6 +136,7 @@ autocmd Filetype json setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype make setlocal noexpandtab
 
 " --- ack options
 if executable('ag')
@@ -237,5 +238,5 @@ nmap <F4> :SlimuxREPLSendLine<CR>
 xmap <F4> :SlimuxREPLSendSelection<CR>
 nmap <F6> :SlimuxREPLSendBuffer<CR>
 
-" --- python-mode configurations
-let g:pymode_breakpoint_bind = '<leader>b'
+" --- Set CtrlP to open from where Vim was launched
+let g:ctrlp_working_path_mode = 0
