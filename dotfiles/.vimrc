@@ -29,7 +29,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
-Plugin 'w0rp/ale'
 Plugin 'ervandew/supertab'
 
 " --- Completion/Snippets
@@ -213,15 +212,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
 let g:ultisnips_python_style = 'google'
 
-" --- Ale
-let g:ale_sign_column_always = 1
-let g:ale_python_pylint_options = '--load-plugins pylint_django'
-let g:ale_python_pylint_change_directory = 0
-let g:ale_linters = {
-\   'python': ['pylint'],
-\   'javascript': ['flow']
-\}
-
 " --- JavaScript
 let g:javascript_plugin_flow = 1
 
@@ -240,3 +230,13 @@ nmap <F6> :SlimuxREPLSendBuffer<CR>
 
 " --- Set CtrlP to open from where Vim was launched
 let g:ctrlp_working_path_mode = 0
+
+" --- vim-flow
+"Use locally installed flow
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
