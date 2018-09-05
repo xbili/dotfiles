@@ -33,7 +33,6 @@ Plugin 'ervandew/supertab'
 
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
 
 " --- Frontend
@@ -147,7 +146,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:ctrlp_use_chaching = 1
+let g:ctrlp_use_caching = 1
+let g:ctrlp_working_path_mode = 0
 
 " --- gitgutter options
 let g:gitgutter_sign_added = '+'
@@ -229,7 +229,6 @@ xmap <F4> :SlimuxREPLSendSelection<CR>
 nmap <F6> :SlimuxREPLSendBuffer<CR>
 
 " --- Set CtrlP to open from where Vim was launched
-let g:ctrlp_working_path_mode = 0
 
 " --- vim-flow
 "Use locally installed flow
