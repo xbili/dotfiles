@@ -34,6 +34,12 @@ Plugin 'ervandew/supertab'
 " --- Completion/Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+
+" --- Linters
+Plugin 'w0rp/ale'
 
 " --- Frontend
 Plugin 'ap/vim-css-color'
@@ -43,7 +49,7 @@ Bundle 'nikvdp/ejs-syntax'
 " --- JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
+Plugin 'wokalski/autocomplete-flow'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -205,13 +211,6 @@ set noshowmode
 " --- Python
 let python_highlight_all = 1
 
-" --- Ultisnips
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
-let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
-let g:ultisnips_python_style = 'google'
-
 " --- JavaScript
 let g:javascript_plugin_flow = 1
 
@@ -230,12 +229,20 @@ nmap <F6> :SlimuxREPLSendBuffer<CR>
 
 " --- Set CtrlP to open from where Vim was launched
 
-" --- vim-flow
-"Use locally installed flow
-let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow= getcwd() . "/" . local_flow
-endif
-if executable(local_flow)
-  let g:flow#flowpath = local_flow
-endif
+" --- ALE
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\}
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" Deoplete-Vim
+let g:deoplete#sources#flow#flow_bin = 'flow'
+
+" Supertabs
+let g:SuperTabDefaultCompletionType = "<c-n>"
