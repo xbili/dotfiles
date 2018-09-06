@@ -210,6 +210,8 @@ set noshowmode
 
 " --- Python
 let python_highlight_all = 1
+let g:pymode_rope = 1
+let g:pymode_paths = ['~/Code/Edison/Utils']
 
 " --- JavaScript
 let g:javascript_plugin_flow = 1
@@ -239,7 +241,9 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
+if has('python3')
+    let g:deoplete#enable_at_startup = 1
+endif
 
 " Deoplete-Vim
 let g:deoplete#sources#flow#flow_bin = 'flow'
