@@ -52,6 +52,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'wokalski/autocomplete-flow'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'leafgarland/typescript-vim'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -62,6 +63,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'jmcomets/vim-pony'
 Plugin 'lambdalisue/vim-pyenv'
 Plugin 'python-mode/python-mode'
+Plugin 'zchee/deoplete-jedi'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
@@ -213,7 +215,9 @@ set noshowmode
 " --- Python
 let python_highlight_all = 1
 let g:pymode_rope = 1
+let g:pymode_rope_complete_on_dot = 0
 let g:pymode_paths = ['~/Code/Edison/Utils']
+
 
 " --- JavaScript
 let g:javascript_plugin_flow = 1

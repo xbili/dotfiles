@@ -1,8 +1,8 @@
 # Make sure PATH is empty before starting
-if [ -f /etc/profile ]; then
-    PATH=""
-    source /etc/profile
-fi
+# if [ -f /etc/profile ]; then
+#    PATH=""
+#    source /etc/profile
+#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -166,3 +166,6 @@ edo-ec2() {
 edo-ssh() {
     awless ssh bili@$1 --identity ~/.ssh/id_rsa
 }
+
+# For Bazel
+export PATH="$PATH:$HOME/bin"
