@@ -50,6 +50,8 @@ Bundle 'nikvdp/ejs-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'wokalski/autocomplete-flow'
+Plugin 'styled-components/vim-styled-components'
+Plugin 'heavenshell/vim-jsdoc'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -74,7 +76,7 @@ Plugin 'epeli/slimux'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+" filetype plugin on
 "
 " Brief help
 " :PluginList          - list configured plugins
@@ -130,6 +132,7 @@ set mouse=a
 let g:delimitMate_expand_cr=1
 
 " --- tabs for different code
+autocmd FileType make setlocal noexpandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
@@ -140,7 +143,6 @@ autocmd Filetype json setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
-autocmd Filetype make setlocal noexpandtab
 
 " --- ack options
 if executable('ag')
@@ -215,6 +217,7 @@ let g:pymode_paths = ['~/Code/Edison/Utils']
 
 " --- JavaScript
 let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
 
 " --- MAPPINGS
 
@@ -250,3 +253,8 @@ let g:deoplete#sources#flow#flow_bin = 'flow'
 
 " Supertabs
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" JSDocs
+let g:jsdoc_enable_es6 = 1
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_access_descriptions = 2

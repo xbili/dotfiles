@@ -154,3 +154,15 @@ export CC=/usr/local/bin/gcc-8
 export CXX=/usr/local/bin/g++-8
 export CPP=/usr/local/bin/cpp-8
 export LD=/usr/local/bin/gcc-8
+
+# For awless - a better AWS CLI
+source /usr/local/share/zsh/site-functions/_awless
+
+# For easy access to Edison's AWS instances
+edo-ec2() {
+    awless ls instances --tag-key=Environment --tag-value=$1
+}
+
+edo-ssh() {
+    awless ssh bili@$1 --identity ~/.ssh/id_rsa
+}
