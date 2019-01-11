@@ -13,3 +13,5 @@
     ci = commit
     st = status
     up = pull --rebase --autostash
+[core]
+	excludesfile = /Users/xbili/.gitignore
