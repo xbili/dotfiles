@@ -74,6 +74,9 @@ Plugin 'junegunn/goyo.vim'
 " --- Interactive programming
 Plugin 'epeli/slimux'
 
+" --- Go
+Plugin 'fatih/vim-go'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -240,7 +243,7 @@ nmap <F6> :SlimuxREPLSendBuffer<CR>
 
 " --- ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
+\   'javascript': ['eslint', 'flow', 'prettier'],
 \}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
