@@ -95,7 +95,7 @@ filetype plugin indent on    " required
 " Theme
 
 syntax on
-set background=light
+set background=dark
 colorscheme solarized
 
 set nowrap
