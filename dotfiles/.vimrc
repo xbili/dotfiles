@@ -21,6 +21,7 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " ----- Vim as a programmer's text editor
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-git'
@@ -30,13 +31,10 @@ Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
 Plugin 'ervandew/supertab'
+Plugin 'christianrondeau/vim-base64'
 
 " --- Completion/Snippets
-Plugin 'SirVer/ultisnips'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
 
 " --- Linters
 Plugin 'w0rp/ale'
@@ -49,10 +47,11 @@ Bundle 'nikvdp/ejs-syntax'
 " --- JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'wokalski/autocomplete-flow'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'ruanyl/coverage.vim'
+Plugin 'flowtype/vim-flow'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -62,8 +61,7 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'hdima/python-syntax'
 Plugin 'jmcomets/vim-pony'
 Plugin 'lambdalisue/vim-pyenv'
-Plugin 'python-mode/python-mode'
-Plugin 'zchee/deoplete-jedi'
+Plugin 'davidhalter/jedi-vim'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
@@ -97,7 +95,7 @@ filetype plugin indent on    " required
 " Theme
 
 syntax on
-set background=dark
+set background=light
 colorscheme solarized
 
 set nowrap
@@ -134,6 +132,7 @@ set noswapfile
 
 set mouse=a
 
+set omnifunc=syntaxcomplete#Complete
 let g:delimitMate_expand_cr=1
 
 " --- tabs for different code
@@ -145,7 +144,7 @@ autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript.jsx setlocal ts=2 sw=2 expandtab
 autocmd Filetype json setlocal ts=2 sw=2 expandtab
-autocmd Filetype python setlocal ts=4 sw=4 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 softtabstop=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
@@ -160,7 +159,9 @@ let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_use_caching = 1
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 1
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 " --- gitgutter options
 let g:gitgutter_sign_added = '+'
@@ -217,10 +218,6 @@ set noshowmode
 
 " --- Python
 let python_highlight_all = 1
-let g:pymode_rope = 1
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_paths = ['~/Code/Edison/Utils']
-
 
 " --- JavaScript
 let g:javascript_plugin_flow = 1
@@ -243,20 +240,18 @@ nmap <F6> :SlimuxREPLSendBuffer<CR>
 
 " --- ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow', 'prettier'],
+\   'javascript': ['eslint', 'flow'],
+\   'python': ['pylint'],
+\}
+let g:ale_fixers = {
+\    'javascript': ['prettier'],
+\    'css': ['prettier'],
 \}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-
-" Use deoplete.
-if has('python3')
-    let g:deoplete#enable_at_startup = 1
-endif
-
-" Deoplete-Vim
-let g:deoplete#sources#flow#flow_bin = 'flow'
+let g:ale_completion_enabled = 1
 
 " Supertabs
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -265,3 +260,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:jsdoc_enable_es6 = 1
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_access_descriptions = 2
+
+" --- Code coverage
+let g:coverage_sign_covered = '⦿'
+let g:coverage_json_report_path = 'coverage/coverage-final.json'
