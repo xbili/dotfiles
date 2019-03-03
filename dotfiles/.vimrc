@@ -32,6 +32,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
 Plugin 'ervandew/supertab'
 Plugin 'christianrondeau/vim-base64'
+Plugin 'ludovicchabant/vim-gutentags'
 
 " --- Completion/Snippets
 Plugin 'Raimondi/delimitMate'
@@ -51,6 +52,7 @@ Plugin 'styled-components/vim-styled-components'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'ruanyl/coverage.vim'
 Plugin 'flowtype/vim-flow'
+Plugin 'jxnblk/vim-mdx-js'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -130,6 +132,9 @@ set mouse=a
 
 set omnifunc=syntaxcomplete#Complete
 let g:delimitMate_expand_cr=1
+
+" --- Search for visually selected word
+vnoremap // y/<C-R>"<CR>
 
 " --- tabs for different code
 autocmd FileType make setlocal noexpandtab
@@ -214,12 +219,28 @@ set noshowmode
 
 " --- Python
 let python_highlight_all = 1
+if jedi#init_python()
+  function! s:jedi_auto_force_py_version() abort
+    let g:jedi#force_py_version = pyenv#python#get_internal_major_version()
+  endfunction
+  augroup vim-pyenv-custom-augroup
+    autocmd! *
+    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+  augroup END
+endif
 
 " --- JavaScript
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
 
 " --- MAPPINGS
+
+" Edit vimrc
+:nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+
+" Source vimrc
+:nnoremap <leader>sv :source ~/.vimrc<cr>
 
 " Pretty format JSON
 nmap <F2> :%! python -m json.tool<CR>
@@ -249,6 +270,9 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_completion_enabled = 1
 
+" Do not change directory on my behalf
+let g:ale_python_pylint_change_directory = 0
+
 " Supertabs
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -260,3 +284,8 @@ let g:jsdoc_access_descriptions = 2
 " --- Code coverage
 let g:coverage_sign_covered = '⦿'
 let g:coverage_json_report_path = 'coverage/coverage-final.json'
+
+" --- Gutentag
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_enabled = 0
+
