@@ -32,6 +32,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
 Plugin 'ervandew/supertab'
 Plugin 'christianrondeau/vim-base64'
+Plugin 'severin-lemaignan/vim-minimap'
 
 " --- Completion/Snippets
 Plugin 'Raimondi/delimitMate'
@@ -142,6 +143,7 @@ autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype typescript setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript.jsx setlocal ts=2 sw=2 expandtab
 autocmd Filetype json setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 softtabstop=4 expandtab
