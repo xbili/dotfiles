@@ -32,7 +32,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
 Plugin 'ervandew/supertab'
 Plugin 'christianrondeau/vim-base64'
-Plugin 'severin-lemaignan/vim-minimap'
+Plugin 'ludovicchabant/vim-gutentags'
 
 " --- Completion/Snippets
 Plugin 'Raimondi/delimitMate'
@@ -53,6 +53,8 @@ Plugin 'heavenshell/vim-jsdoc'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ruanyl/coverage.vim'
 Plugin 'flowtype/vim-flow'
+Plugin 'jxnblk/vim-mdx-js'
+Plugin 'yardnsm/vim-import-cost'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -73,7 +75,7 @@ Plugin 'junegunn/goyo.vim'
 " --- Interactive programming
 Plugin 'epeli/slimux'
 
-" --- Go
+" --- Golang
 Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
@@ -136,6 +138,9 @@ set mouse=a
 set omnifunc=syntaxcomplete#Complete
 let g:delimitMate_expand_cr=1
 
+" --- Search for visually selected word
+vnoremap // y/<C-R>"<CR>
+
 " --- tabs for different code
 autocmd FileType make setlocal noexpandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
@@ -149,6 +154,7 @@ autocmd Filetype json setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 softtabstop=4 expandtab
 autocmd Filetype scss setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype go setlocal ts=4 sw=4 noexpandtab
 
 " --- ack options
 if executable('ag')
@@ -164,6 +170,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 1
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
+nnoremap <leader>. :CtrlPTag<cr>
 
 " --- gitgutter options
 let g:gitgutter_sign_added = '+'
@@ -212,6 +219,7 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', 'NONE')
 
 " --- Devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " --- Airline
 let g:airline_powerline_fonts = 1
@@ -220,12 +228,28 @@ set noshowmode
 
 " --- Python
 let python_highlight_all = 1
+if jedi#init_python()
+  function! s:jedi_auto_force_py_version() abort
+    let g:jedi#force_py_version = pyenv#python#get_internal_major_version()
+  endfunction
+  augroup vim-pyenv-custom-augroup
+    autocmd! *
+    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+  augroup END
+endif
 
 " --- JavaScript
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
 
 " --- MAPPINGS
+
+" Edit vimrc
+:nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+
+" Source vimrc
+:nnoremap <leader>sv :source ~/.vimrc<cr>
 
 " Pretty format JSON
 nmap <F2> :%! python -m json.tool<CR>
@@ -248,12 +272,19 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \    'javascript': ['prettier'],
 \    'css': ['prettier'],
+\   'go': ['gofmt', 'goimports'],
 \}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_completion_enabled = 1
+
+" Do not change directory on my behalf
+let g:ale_python_pylint_change_directory = 0
+
+" Shortcut for ALEFix
+:nnoremap <leader>af :ALEFix<cr>
 
 " Supertabs
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -266,3 +297,21 @@ let g:jsdoc_access_descriptions = 2
 " --- Code coverage
 let g:coverage_sign_covered = '⦿'
 let g:coverage_json_report_path = 'coverage/coverage-final.json'
+
+" --- Gutentag
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_enabled = 1
+
+" --- Javascript Import Cost
+" Put this in your .vimrc
+augroup import_cost_auto_run
+  autocmd!
+  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
+augroup END
+
+" --- vim-go
+au Filetype go nnoremap <leader>gdv :vsp <CR>:exe "GoDef" <CR>
+au Filetype go nnoremap <leader>gds :sp <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>gdt :tab split <CR>:exe "GoDef"<CR>

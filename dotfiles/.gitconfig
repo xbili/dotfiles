@@ -6,12 +6,14 @@
     showbranch = auto
 [user]
     name = Bili Xu
-    email = xubili93@gmail.com
+    email = bili@edison.tech
 [alias]
     co = checkout
     br = branch
     ci = commit
     st = status
     up = pull --rebase --autostash
+    loll = log --graph --decorate --pretty=oneline --abbrev-commit
+    amend = commit --amend
 [core]
-	excludesfile = /Users/xbili/.gitignore
+    excludesfile = /Users/xbili/.gitignore
