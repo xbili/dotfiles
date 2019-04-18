@@ -18,12 +18,14 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'mhartington/oceanic-next'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-sensible'
 
 " ----- Vim as a programmer's text editor
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'tpope/vim-git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -33,6 +35,8 @@ Plugin 'wincent/terminus'
 Plugin 'ervandew/supertab'
 Plugin 'christianrondeau/vim-base64'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'janko-m/vim-test'
+Plugin 'Shougo/deoplete.nvim'
 
 " --- Completion/Snippets
 Plugin 'Raimondi/delimitMate'
@@ -65,6 +69,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'jmcomets/vim-pony'
 Plugin 'lambdalisue/vim-pyenv'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'deoplete-plugins/deoplete-jedi'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
@@ -98,7 +103,11 @@ filetype plugin indent on    " required
 " Theme
 
 syntax on
-set background=dark
+if strftime("%H") >= 9 && strftime("%H") < 19
+  set background=light
+else
+  set background=dark
+endif
 colorscheme solarized
 
 set nowrap
@@ -165,12 +174,15 @@ endif
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|dist'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 1
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " --- gitgutter options
 let g:gitgutter_sign_added = '+'
@@ -183,11 +195,11 @@ let g:gitgutter_sign_modified_removed = 'w'
 "
 " Open/close NERDTree Tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 0
+
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['node_modules', '\.pyc$', '.DS_Store', '\.class$', '__pycache__']
+let NERDTreeIgnore=['node_modules', '\.pyc$', '.DS_Store', '\.class$', '__pycache__', 'tags']
 
 " NERDTree File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -262,12 +274,14 @@ nmap <F4> :SlimuxREPLSendLine<CR>
 xmap <F4> :SlimuxREPLSendSelection<CR>
 nmap <F6> :SlimuxREPLSendBuffer<CR>
 
-" --- Set CtrlP to open from where Vim was launched
+" --- Ack
+:nnoremap <leader>a :Ack<Space>
 
 " --- ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
+\   'javascript': ['eslint', 'flow', 'flow-language-server'],
 \   'python': ['pylint'],
+\   'go': ['go-langserver'],
 \}
 let g:ale_fixers = {
 \    'javascript': ['prettier'],
@@ -315,3 +329,9 @@ augroup END
 au Filetype go nnoremap <leader>gdv :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>gds :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gdt :tab split <CR>:exe "GoDef"<CR>
+
+" --- vim-test
+let test#strategy = "neovim"
+
+" --- Deoplete
+let g:deoplete#enable_at_startup = 1

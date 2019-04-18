@@ -233,3 +233,9 @@ fi
 ###-end-npm-completion-###
 
 export PYTHONPATH="$HOME/Code/Edison/Utils"
+
+# Go environment variables
+export GOPATH="$HOME/go"
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=7
