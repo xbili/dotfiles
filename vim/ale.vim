@@ -6,7 +6,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \    'javascript': ['prettier'],
 \    'css': ['prettier'],
-\   'go': ['gofmt', 'goimports'],
+\    'go': ['gofmt', 'goimports'],
 \}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
