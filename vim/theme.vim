@@ -1,8 +1,13 @@
 " Theme
 
 syntax on
-set background=light
-colorscheme solarized
+if strftime("%H") >= 9 && strftime("%H") < 19
+  set background=light
+  colorscheme solarized
+else
+  set background=dark
+  colorscheme solarized
+endif
 
 set nowrap
 set backspace=indent,eol,start
