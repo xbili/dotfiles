@@ -1,6 +1,6 @@
 " --- ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
+\   'javascript': ['eslint', 'flow', 'flow-language-server'],
 \   'python': ['pylint'],
 \}
 let g:ale_fixers = {
