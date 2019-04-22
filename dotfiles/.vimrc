@@ -116,6 +116,7 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 set number
+set numberwidth=4
 set expandtab
 set shiftwidth=4
 set shiftround
@@ -336,3 +337,5 @@ let test#strategy = "neovim"
 
 " --- Deoplete
 let g:deoplete#enable_at_startup = 1
+
+echo "Thank you for flying vim, Mr Bili"
