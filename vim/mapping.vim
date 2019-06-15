@@ -29,3 +29,8 @@ nnoremap <leader>. :CtrlPTag<cr>
 
 " Supertabs
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" CtrlP Funky
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>

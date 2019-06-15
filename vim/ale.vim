@@ -1,10 +1,11 @@
 " --- ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow', 'flow-language-server'],
+\   'javascript': ['eslint', 'flow'],
 \   'python': ['pylint'],
 \}
 let g:ale_fixers = {
 \    'javascript': ['prettier'],
+\    'json': ['prettier'],
 \    'css': ['prettier'],
 \    'go': ['gofmt', 'goimports'],
 \}
@@ -12,7 +13,6 @@ let g:ale_fixers = {
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_completion_enabled = 1
 
 " Do not change directory on my behalf
 let g:ale_python_pylint_change_directory = 0

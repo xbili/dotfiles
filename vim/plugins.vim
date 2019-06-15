@@ -14,27 +14,28 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'mhartington/oceanic-next'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-sensible'
 
 " ----- Vim as a programmer's text editor
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'tpope/vim-git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wincent/terminus'
-Plugin 'ervandew/supertab'
 Plugin 'christianrondeau/vim-base64'
-Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'janko-m/vim-test'
+Plugin 'junegunn/fzf.vim'
 
-" --- Completion/Snippets
+" --- Completion
 Plugin 'Raimondi/delimitMate'
-
-" --- Linters
 Plugin 'w0rp/ale'
+Plugin 'neoclide/coc.nvim'
 
 " --- Frontend
 Plugin 'ap/vim-css-color'
@@ -46,10 +47,13 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'ruanyl/coverage.vim'
 Plugin 'flowtype/vim-flow'
 Plugin 'jxnblk/vim-mdx-js'
 Plugin 'yardnsm/vim-import-cost'
+Plugin 'jparise/vim-graphql'
 
 " --- Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -60,6 +64,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'jmcomets/vim-pony'
 Plugin 'lambdalisue/vim-pyenv'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'deoplete-plugins/deoplete-jedi'
 
 " --- Verilog
 Plugin 'vhda/verilog_systemverilog.vim'
@@ -71,7 +76,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'epeli/slimux'
 
 " --- Golang
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

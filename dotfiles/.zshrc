@@ -218,3 +218,10 @@ export GOPATH="$HOME/go"
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=7
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export FZF_DEFAULT_COMMAND='
+  (git ls-tree -r --name-only HEAD ||
+   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+      sed s/^..//) 2> /dev/null'
