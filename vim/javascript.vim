@@ -1,11 +1,3 @@
-" Import cost
-augroup import_cost_auto_run
-  autocmd!
-  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
-  autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
-  autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
-augroup END
-
 " JSDocs
 let g:jsdoc_enable_es6 = 1
 let g:jsdoc_underscore_private = 1

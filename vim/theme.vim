@@ -52,3 +52,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 set noshowmode
+
+" For italics
+set t_ZH=[3m
+set t_ZR=[23m

@@ -35,7 +35,10 @@ Plugin 'junegunn/fzf.vim'
 " --- Completion
 Plugin 'Raimondi/delimitMate'
 Plugin 'w0rp/ale'
-Plugin 'neoclide/coc.nvim'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 " --- Frontend
 Plugin 'ap/vim-css-color'
@@ -52,7 +55,6 @@ Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'ruanyl/coverage.vim'
 Plugin 'flowtype/vim-flow'
 Plugin 'jxnblk/vim-mdx-js'
-Plugin 'yardnsm/vim-import-cost'
 Plugin 'jparise/vim-graphql'
 
 " --- Devicons
