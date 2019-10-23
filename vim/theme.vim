@@ -2,7 +2,7 @@
 
 syntax on
 if strftime("%H") >= 9 && strftime("%H") < 19
-  set background=light
+  set background=dark
   colorscheme solarized
 else
   set background=dark

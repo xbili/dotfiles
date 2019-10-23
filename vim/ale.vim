@@ -16,3 +16,5 @@ let g:ale_lint_on_text_changed = 0
 
 " Do not change directory on my behalf
 let g:ale_python_pylint_change_directory = 0
+
+let g:ale_completion_enabled = 0

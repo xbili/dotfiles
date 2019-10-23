@@ -19,13 +19,10 @@ xmap <F4> :SlimuxREPLSendSelection<CR>
 nmap <F6> :SlimuxREPLSendBuffer<CR>
 
 " Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+nmap <silent> <leader>t :NERDTreeToggle<CR>
 
 " Open CtrlP with \.
 nnoremap <leader>. :CtrlPTag<cr>
-
-" Shortcut for ALEFix
-:nnoremap <leader>af :ALEFix<cr>
 
 " Supertabs
 let g:SuperTabDefaultCompletionType = "<c-n>"

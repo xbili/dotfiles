@@ -3,13 +3,17 @@ let g:delimitMate_expand_cr=1
 " DelimiteMate - Python
 autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
 
-if executable('flow')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'flow',
-        \ 'cmd': {server_info->['flow', 'lsp']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx'],
-        \ })
-endif
+" Coc.nvim - remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-let g:lsp_diagnostics_enabled = 0 
+" Coc.nvim - remap keys for renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Coc.nvim - remap keys for prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nmap <leader>af :Prettier<CR>
+
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/bundle/vim-snippets/Ultisnips']

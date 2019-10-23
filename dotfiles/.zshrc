@@ -97,6 +97,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias g='git'
 alias gst='git status'
 alias vim='nvim'
+alias gbc="git branch --merged | egrep -v \"(^\*|master|develop)\" | xargs git branch -d"
 
 export EDITOR='nvim'
 
@@ -215,7 +216,8 @@ export PYTHONPATH="$HOME/Code/Edison/Utils"
 
 # Go environment variables
 export GOPATH="$HOME/go"
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export GOBIN="$GOPATH/bin"
+export PATH=$PATH:/usr/local/go/bin:$GOBIN
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=7
 
@@ -225,3 +227,4 @@ export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
+

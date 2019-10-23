@@ -1,96 +1,76 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
+call plug#begin('~/.vim/plugged')
 
 " --- Making Vim look good ---
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mhartington/oceanic-next'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-sensible'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-sensible'
 
 " ----- Vim as a programmer's text editor
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'tpope/vim-git'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mileszs/ack.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'wincent/terminus'
-Plugin 'christianrondeau/vim-base64'
-Plugin 'janko-m/vim-test'
-Plugin 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'tpope/vim-git'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'wincent/terminus'
+Plug 'christianrondeau/vim-base64'
+Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " --- Completion
-Plugin 'Raimondi/delimitMate'
-Plugin 'w0rp/ale'
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/async.vim'
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-
-" --- Frontend
-Plugin 'ap/vim-css-color'
-Plugin 'mattn/emmet-vim'
-Bundle 'nikvdp/ejs-syntax'
-
-" --- JavaScript
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'styled-components/vim-styled-components'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'ruanyl/coverage.vim'
-Plugin 'flowtype/vim-flow'
-Plugin 'jxnblk/vim-mdx-js'
-Plugin 'jparise/vim-graphql'
-
-" --- Devicons
-Plugin 'ryanoasis/vim-devicons'
-
-" --- Python
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'hdima/python-syntax'
-Plugin 'jmcomets/vim-pony'
-Plugin 'lambdalisue/vim-pyenv'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'deoplete-plugins/deoplete-jedi'
-
-" --- Verilog
-Plugin 'vhda/verilog_systemverilog.vim'
-
-" --- Zen Writing
-Plugin 'junegunn/goyo.vim'
-
-" --- Interactive programming
-Plugin 'epeli/slimux'
+Plug 'Raimondi/delimitMate'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " --- Golang
-" Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" --- Frontend
+Plug 'ap/vim-css-color'
+Plug 'mattn/emmet-vim'
+Plug 'stephenway/postcss.vim'
+Plug 'hail2u/vim-css3-syntax'
+
+" --- JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'styled-components/vim-styled-components'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'ruanyl/coverage.vim'
+Plug 'flowtype/vim-flow'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'jparise/vim-graphql'
+
+" --- Devicons
+Plug 'ryanoasis/vim-devicons'
+
+" --- Python
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'hdima/python-syntax'
+Plug 'jmcomets/vim-pony'
+Plug 'lambdalisue/vim-pyenv'
+Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
+
+" --- Verilog
+Plug 'vhda/verilog_systemverilog.vim'
+
+" --- Zen Writing
+Plug 'junegunn/goyo.vim'
+
+" --- Interactive programming
+Plug 'epeli/slimux'
+
+call plug#end()
