@@ -2,6 +2,7 @@ function! SourceConfiguration(name)
     exec "source" "~/.vim/" . a:name . ".vim"
 endfunction
 
+call SourceConfiguration("ale")
 call SourceConfiguration("plugins")
 call SourceConfiguration("autocomplete")
 call SourceConfiguration("theme")

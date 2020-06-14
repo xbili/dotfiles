@@ -131,21 +131,10 @@ fi
 #export CXX=/usr/local/bin/g++-8
 #export CPP=/usr/local/bin/cpp-8
 #export LD=/usr/local/bin/gcc-8
-export LDFLAGS="-L/usr/local/opt/readline/lib" 
-export CPPFLAGS="-I/usr/local/opt/readline/include"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
-
-
-# For easy access to Edison's AWS instances
-edo-ec2() {
-    awless ls instances --tag-key=Environment --tag-value=$1
-}
-
-edo-ssh() {
-    awless ssh bili@$1 --identity ~/.ssh/id_rsa --private
-}
+#export LDFLAGS="-L/usr/local/opt/readline/lib" 
+#export CPPFLAGS="-I/usr/local/opt/readline/include"
+#export LDFLAGS="-L/usr/local/opt/openssl/lib"
+#export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 # For Bazel
 export PATH="$PATH:$HOME/bin"
@@ -228,3 +217,5 @@ export FZF_DEFAULT_COMMAND='
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
+# For flutter
+export PATH="$PATH:$HOME/flutter/flutter/bin"

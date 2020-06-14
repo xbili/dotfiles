@@ -1,5 +1,4 @@
 " Theme
-
 syntax on
 if strftime("%H") >= 9 && strftime("%H") < 19
   set background=dark

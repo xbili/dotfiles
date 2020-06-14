@@ -28,9 +28,7 @@ Plug 'honza/vim-snippets'
 
 " --- Completion
 Plug 'Raimondi/delimitMate'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'dense-analysis/ale'
 
 " --- Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -42,16 +40,20 @@ Plug 'stephenway/postcss.vim'
 Plug 'hail2u/vim-css3-syntax'
 
 " --- JavaScript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'styled-components/vim-styled-components'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'heavenshell/vim-jsdoc', { 'tag': '1.0.0' }
 Plug 'ruanyl/coverage.vim'
 Plug 'flowtype/vim-flow'
 Plug 'jxnblk/vim-mdx-js'
 Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
+
 
 " --- Devicons
 Plug 'ryanoasis/vim-devicons'
