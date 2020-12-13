@@ -118,10 +118,6 @@ eval "$(pyenv virtualenv-init -)"
 # Android Studio
 alias android-studio='/usr/local/android-studio/bin/studio.sh'
 
-if [ -d "/opt/Xilinx/Vivado/2017.4" ]; then
-    source /opt/Xilinx/Vivado/2017.4/settings64.sh
-fi
-
 # GCC and G++ setup (instead of using Mac OSX's clang)
 #alias gcc='gcc-8'
 #alias cc='gcc-8'
@@ -209,7 +205,6 @@ export GOBIN="$GOPATH/bin"
 export PATH=$PATH:/usr/local/go/bin:$GOBIN
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=7
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export FZF_DEFAULT_COMMAND='
@@ -219,3 +214,7 @@ export FZF_DEFAULT_COMMAND='
 
 # For flutter
 export PATH="$PATH:$HOME/flutter/flutter/bin"
+
+export PATH="$PATH:$(yarn global bin)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

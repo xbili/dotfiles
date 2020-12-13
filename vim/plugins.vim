@@ -23,7 +23,6 @@ Plug 'christianrondeau/vim-base64'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf.vim'
 Plug 'kshenoy/vim-signature'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " --- Completion
@@ -63,8 +62,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'hdima/python-syntax'
 Plug 'jmcomets/vim-pony'
 Plug 'lambdalisue/vim-pyenv'
-Plug 'davidhalter/jedi-vim'
-Plug 'deoplete-plugins/deoplete-jedi'
 
 " --- Verilog
 Plug 'vhda/verilog_systemverilog.vim'
