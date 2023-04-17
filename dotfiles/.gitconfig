@@ -13,3 +13,5 @@
     ci = commit
     st = status
     up = pull --rebase --autostash
+[push]
+    autoSetupRemote = true
